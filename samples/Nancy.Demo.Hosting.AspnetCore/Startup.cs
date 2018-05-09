@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Nancy.Owin;
-
-namespace Nancy.Demo.Hosting.AspnetCore
+﻿namespace Nancy.Demo.Hosting.AspnetCore
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
+    using Nancy.Owin;
+
     public class Startup
     {
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -17,15 +16,12 @@ namespace Nancy.Demo.Hosting.AspnetCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-	        if (env.IsDevelopment())
-		        app.UseDeveloperExceptionPage();
-
-	        app.UseOwin().UseNancy();
-
-			app.Run(async (context) =>
+            if (env.IsDevelopment())
             {
-                await context.Response.WriteAsync("Hello World!");
-            });
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseOwin().UseNancy();
         }
     }
 }
